@@ -1,0 +1,27 @@
+version: '3'
+services:  
+  web-server:
+    build:
+      context: ./web-server
+      dockerfile: Dockerfile
+    ports:
+      - 4001:3000
+    volumes: 
+      - /app/node_modules
+      - ./web-server:/app
+  backend-server:
+    build:
+      context: ./backend-server
+      dockerfile: Dockerfile
+    ports:
+      - 4002:3000
+  pwa-app:
+    build:
+      context: ./pwa-app
+      dockerfile: Dockerfile
+    ports:
+      - 4003:3000
+    volumes: 
+      - /app/node_modules
+      - ./pwa-app:/app    
+
