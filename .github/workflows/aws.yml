@@ -78,6 +78,7 @@ jobs:
     - name: Generate Deployment Package
       run:  | 
         cd pwa-app 
+        ls
         zip -r deploy.zip *
 
     - name: Deploy to EB
