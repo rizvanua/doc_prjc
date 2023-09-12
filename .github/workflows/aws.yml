@@ -76,7 +76,7 @@ jobs:
         echo "image=$IMAGE_TAG" >> $GITHUB_OUTPUT
         echo "HELLO2"
     - name: Generate Deployment Package
-      run: zip -r deploy.zip ./pwa-app *
+      run: zip -r deploy.zip ./pwa-app
 
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
