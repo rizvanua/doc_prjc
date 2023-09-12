@@ -87,4 +87,5 @@ jobs:
         environment_name: Test-app-env
         version_label: "pwa-app-${{ steps.build-image.outputs.image }}"
         region: ${{env.AWS_REGION}}
+        run: cd pwa-app
         deployment_package: deploy.zip    
