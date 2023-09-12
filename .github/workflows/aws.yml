@@ -80,6 +80,7 @@ jobs:
 
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
+      run: cd pwa-app
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -87,5 +88,4 @@ jobs:
         environment_name: Test-app-env
         version_label: "pwa-app-${{ steps.build-image.outputs.image }}"
         region: ${{env.AWS_REGION}}
-        run: cd pwa-app
         deployment_package: deploy.zip    
