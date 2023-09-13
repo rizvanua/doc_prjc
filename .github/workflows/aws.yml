@@ -76,7 +76,7 @@ jobs:
         echo "image=$IMAGE_TAG" >> $GITHUB_OUTPUT
         echo "HELLO2"
     - name: Generate Deployment Package
-      run: zip -r deploy.zip ./pwa-app
+      run: zip -r deploy.zip ./pwa-app -x '*.git*'
 
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
@@ -85,6 +85,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: test-app
         environment_name: Test-app-env
-        version_label: "pwa-app-${{ steps.build-image.outputs.image }}"
+        version_label: ${{ github.sha }}
         region: ${{env.AWS_REGION}}
         deployment_package: deploy.zip    
