@@ -20,7 +20,7 @@ services:
       context: ./pwa-app
       dockerfile: Dockerfile
     ports:
-      - 4003:3000
+      - 4003:80
     volumes: 
       - /app/node_modules
       - ./pwa-app:/app    
