@@ -4,9 +4,17 @@
     "description": "Your project description",
     "main": "index.js",
     "scripts": {
-      "start": "node index.js"
+        "start": "node index.js",
+        "watch": "npx nodemon"
     },
-    "dependencies": {
-      "express": "^4.17.1"
-    }
-  }
+    "dependencies": {        
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+      "errorhandler": "^1.5.1",
+      "connect-livereload": "^0.6.1",
+      "livereload": "^0.9.3",
+      "nodemon": "^2.0.22"
+  },
+    "type": "module"
+}

@@ -1,26 +1,34 @@
 version: '3'
 services:  
-  web-server:
+  nginx:
+    depends_on:
+      - pwa-app
+      - api
+      - backend-server
+    restart: always
     build:
-      context: ./web-server
-      dockerfile: Dockerfile
-    ports:
-      - 4001:3000
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports: 
+      - 3050:80   
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
     volumes: 
       - /app/node_modules
-      - ./web-server:/app
+      - ./api:/app  
   backend-server:
     build:
       context: ./backend-server
-      dockerfile: Dockerfile
-    ports:
-      - 4002:3000
+      dockerfile: Dockerfile.dev
+    volumes: 
+      - /app/node_modules
+      - ./backend-server:/app
   pwa-app:
     build:
       context: ./pwa-app
-      dockerfile: Dockerfile
-    ports:
-      - 4003:80
+      dockerfile: Dockerfile.dev
     volumes: 
       - /app/node_modules
       - ./pwa-app:/app    
